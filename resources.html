@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resources - JobSphere</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        body {
+            background: #f8fafc;
+            color: #111827;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: #111827 !important;
+            min-height: 76px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Logo */
+
+        .logo-icon {
+            width: 43px;
+            height: 43px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 1.45rem;
+            font-weight: 800;
+        }
+
+        .logo-text span {
+            color: #a89cff;
+        }
+
+        /* Navigation */
+
+        .navbar-nav {
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #d1d5db !important;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 17px !important;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .navbar .nav-link i {
+            font-size: 14px;
+        }
+
+        .navbar .nav-link:hover {
+            color: white !important;
+            background: rgba(99, 91, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .navbar .nav-link.active {
+            color: white !important;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+        }
+
+        /* Logout */
+
+        #authButton {
+            margin-left: 18px;
+        }
+
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 21px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Mobile */
+
+        .navbar-toggler {
+            border: 1px solid #4b5563;
+            padding: 7px 10px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        @media (max-width: 991px) {
+
+            .navbar-nav {
+                margin-top: 15px;
+                padding: 10px;
+                background: #1f2937;
+                border-radius: 15px;
+            }
+
+            .navbar .nav-link {
+                margin: 3px 0;
+            }
+
+            #authButton {
+                margin-top: 12px;
+                margin-left: 0;
+            }
+        }
+
+        /* ================= HERO ================= */
+
+        .resource-hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
+            color: white;
+            padding: 90px 0;
+        }
+
+        .resource-hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            top: -120px;
+            left: -80px;
+        }
+
+        .resource-hero::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+            bottom: -180px;
+            right: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: white;
+            color: #5b4ef5;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-hero h1 {
+            font-size: 3rem;
+        }
+
+        .resource-hero p {
+            max-width: 700px;
+            margin: auto;
+            opacity: 0.92;
+        }
+
+
+        /* ================= RESOURCE CARDS ================= */
+
+        .resource-card {
+            border: none;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            transition: 0.3s ease;
+            overflow: hidden;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 91, 255, 0.16);
+        }
+
+        .resource-card .card-body {
+            padding: 35px 25px;
+        }
+
+        .resource-icon {
+            width: 75px;
+            height: 75px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ede9fe, #fce7f3);
+            color: #635bff;
+            font-size: 30px;
+            transition: 0.3s ease;
+        }
+
+        .resource-card:hover .resource-icon {
+            transform: scale(1.08);
+        }
+
+        .resource-card h3 {
+            font-size: 1.35rem;
+        }
+
+        .resource-card p {
+            line-height: 1.7;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .resource-btn {
+            border: none;
+            color: white;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.25s ease;
+        }
+
+        .resource-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(99, 91, 255, 0.25);
+        }
+
+        .resource-section-label {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: #ede9fe;
+            color: #5b4ef5;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* ================= WHY SECTION ================= */
+
+        .why-section {
+            background: #ffffff;
+        }
+
+        .why-card {
+            border: 1px solid #eef0f6;
+            border-radius: 18px;
+            padding: 30px 20px;
+            height: 100%;
+            transition: 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: #f1efff;
+            color: #635bff;
+            font-size: 25px;
+        }
+
+        .why-section-label {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: #fce7f3;
+            color: #db2777;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .career-cta {
+            background: linear-gradient(135deg, #111827, #312e81);
+            border-radius: 25px;
+            color: white;
+            padding: 55px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-cta::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(236, 72, 153, 0.15);
+            right: -70px;
+            top: -70px;
+        }
+
+        .career-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #635bff;
+            border: none;
+            padding: 11px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            color: #4f46e5;
+            background: #f8fafc;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            background: #111827;
+            color: #cbd5e1;
+            padding: 55px 0 20px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand i {
+            color: #7c6cff;
+        }
+
+        .footer h6 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 9px;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            background: #1f2937;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #635bff;
+        }
+
+        .copyright {
+            border-top: 1px solid #293241;
+            margin-top: 35px;
+            padding-top: 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container">
+
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+
+                <span class="logo-icon me-2">
+                    <i class="fa-solid fa-globe"></i>
+                </span>
+
+                <span class="logo-text">
+                    Job<span>Sphere</span>
+                </span>
+
+            </a>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav mx-auto gap-lg-2">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+
+                            <i class="fa-solid fa-house me-1"></i>
+                            Home
+
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.html">
+
+                            <i class="fa-solid fa-briefcase me-1"></i>
+                            Jobs
+
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="companies.html">
+
+                            <i class="fa-solid fa-building me-1"></i>
+                            Companies
+
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="resources.html">
+
+                            <i class="fa-solid fa-book-open me-1"></i>
+                            Resources
+
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <button id="authButton" class="logout-btn" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket me-2"></i>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="resource-hero text-center">
+
+        <div class="container hero-content">
+
+            <span class="hero-badge">
+                <i class="fa-solid fa-lightbulb me-2"></i>
+                Learn • Prepare • Grow
+            </span>
+
+            <h1 class="fw-bold mb-3">
+                Career Resources
+            </h1>
+
+            <p class="lead">
+                Build your skills, prepare for interviews
+                and take the next step in your career journey.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RESOURCE CARDS ================= -->
+
+    <section class="py-5">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <span class="resource-section-label">
+                    CAREER GUIDANCE
+                </span>
+
+                <h2 class="fw-bold mt-2">
+                    Explore Our Resources
+                </h2>
+
+                <p class="text-muted">
+                    Simple and useful guidance for your professional journey.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- Resume -->
+
+                <div class="col-md-4">
+
+                    <div class="resource-card h-100">
+
+                        <div class="card-body text-center">
+
+                            <div class="resource-icon mb-4">
+
+                                <i class="fa-solid fa-file-lines"></i>
+
+                            </div>
+
+                            <h3 class="fw-bold mb-3">
+                                Resume Tips
+                            </h3>
+
+                            <p class="text-muted">
+                                Learn how to create a professional resume
+                                that highlights your skills, education
+                                and projects.
+                            </p>
+
+                            <a href="resume-tips.html" class="resource-btn mt-3">
+
+                                Read More
+                                <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Interview -->
+
+                <div class="col-md-4">
+
+                    <div class="resource-card h-100">
+
+                        <div class="card-body text-center">
+
+                            <div class="resource-icon mb-4">
+
+                                <i class="fa-solid fa-user-tie"></i>
+
+                            </div>
+
+                            <h3 class="fw-bold mb-3">
+                                Interview Preparation
+                            </h3>
+
+                            <p class="text-muted">
+                                Prepare for interviews with common
+                                questions, technical tips and
+                                communication guidance.
+                            </p>
+
+                            <a href="interview.html" class="resource-btn mt-3">
+
+                                Read More
+                                <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Career Growth -->
+
+                <div class="col-md-4">
+
+                    <div class="resource-card h-100">
+
+                        <div class="card-body text-center">
+
+                            <div class="resource-icon mb-4">
+
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+
+                            </div>
+
+                            <h3 class="fw-bold mb-3">
+                                Career Growth
+                            </h3>
+
+                            <p class="text-muted">
+                                Discover ways to improve your skills,
+                                build projects, set goals and
+                                grow professionally.
+                            </p>
+
+                            <a href="career-growth.html" class="resource-btn mt-3">
+
+                                Read More
+                                <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= WHY SECTION ================= -->
+
+    <section class="why-section py-5">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <span class="why-section-label">
+                    WHY JOBSPHERE?
+                </span>
+
+                <h2 class="fw-bold mt-2">
+                    Everything You Need to Grow
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- Learn -->
+
+                <div class="col-md-4">
+
+                    <div class="why-card text-center">
+
+                        <div class="why-icon mb-3">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                        </div>
+
+                        <h5 class="fw-bold">
+                            Learn New Skills
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Improve your technical and professional
+                            skills with useful guidance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Prepare -->
+
+                <div class="col-md-4">
+
+                    <div class="why-card text-center">
+
+                        <div class="why-icon mb-3">
+
+                            <i class="fa-solid fa-comments"></i>
+
+                        </div>
+
+                        <h5 class="fw-bold">
+                            Prepare Better
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Get useful tips to prepare confidently
+                            for your next interview.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Grow -->
+
+                <div class="col-md-4">
+
+                    <div class="why-card text-center">
+
+                        <div class="why-icon mb-3">
+
+                            <i class="fa-solid fa-chart-line"></i>
+
+                        </div>
+
+                        <h5 class="fw-bold">
+                            Grow Your Career
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Set goals, build projects and discover
+                            new career opportunities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="py-5">
+
+        <div class="container">
+
+            <div class="career-cta text-center">
+
+                <div class="career-cta-content">
+
+                    <h2 class="fw-bold mb-3">
+                        Ready to Grow Your Career?
+                    </h2>
+
+                    <p class="mb-4">
+                        Explore jobs, learn new skills and take
+                        the next step toward your career goals.
+                    </p>
+
+                    <a href="jobs.html" class="cta-btn">
+
+                        Explore Jobs
+                        <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-5">
+
+                    <div class="footer-brand">
+
+                        <i class="fa-solid fa-globe me-2"></i>
+                        JobSphere
+
+                    </div>
+
+                    <p>
+                        Explore opportunities, discover companies,
+                        and take the next step in your career.
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-2">
+
+                    <h6>Quick Links</h6>
+
+                    <a href="index.html">Home</a>
+                    <a href="jobs.html">Jobs</a>
+                    <a href="companies.html">Companies</a>
+
+                </div>
+
+
+                <div class="col-md-2">
+
+                    <h6>Resources</h6>
+
+                    <a href="resources.html">Resume Tips</a>
+                    <a href="interview.html">Interviews</a>
+                    <a href="career-growth.html">Career Guide</a>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <h6>Follow Us</h6>
+
+                    <div class="social-icons">
+
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 JobSphere. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function logout() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "login.html";
+    }
+    </script>
+</body>
+
+</html>

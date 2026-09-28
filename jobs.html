@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jobs - JobSphere</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #f8f9ff 0%, #eef2ff 100%);
+            color: #1e293b;
+        }
+
+        /* Navbar */
+    
+        .navbar {
+            background: #111827 !important;
+            min-height: 76px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Logo */
+
+        .logo-icon {
+            width: 43px;
+            height: 43px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 1.45rem;
+            font-weight: 800;
+        }
+
+        .logo-text span {
+            color: #a89cff;
+        }
+
+        /* Navigation */
+
+        .navbar-nav {
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #d1d5db !important;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 17px !important;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .navbar .nav-link i {
+            font-size: 14px;
+        }
+
+        .navbar .nav-link:hover {
+            color: white !important;
+            background: rgba(99, 91, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .navbar .nav-link.active {
+            color: white !important;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+        }
+
+        /* Logout */
+
+        #authButton {
+            margin-left: 18px;
+        }
+
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 21px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Mobile */
+
+        .navbar-toggler {
+            border: 1px solid #4b5563;
+            padding: 7px 10px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        @media (max-width: 991px) {
+
+            .navbar-nav {
+                margin-top: 15px;
+                padding: 10px;
+                background: #1f2937;
+                border-radius: 15px;
+            }
+
+            .navbar .nav-link {
+                margin: 3px 0;
+            }
+
+            #authButton {
+                margin-top: 12px;
+                margin-left: 0;
+            }
+        }
+
+        /* Hero */
+        .jobs-hero {
+            background: linear-gradient(135deg, #172554, #4338ca, #db2777);
+            color: white;
+            padding: 70px 20px 100px;
+            text-align: center;
+        }
+
+        .jobs-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .jobs-hero p {
+            font-size: 18px;
+        }
+
+        .hero-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 32px;
+        }
+
+        /* Search */
+        .search-box {
+            margin-top: -45px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .search-inner {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        .search-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .search-inner .form-control {
+            height: 52px;
+            border-radius: 12px;
+            border: 1px solid #dfe3eb;
+        }
+
+        .search-btn {
+            height: 52px;
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            color: white;
+            font-weight: 700;
+        }
+
+
+        /* Section */
+        .section-title {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+        }
+
+        /* Job Card */
+        .job-card {
+            background: white;
+            border: none;
+            border-radius: 18px;
+            padding: 24px;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+            transition: 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 35px rgba(99, 91, 255, 0.15);
+        }
+
+        .job-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: #f1efff;
+            color: #635bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .job-title {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .company-name {
+            color: #635bff;
+            font-weight: 600;
+        }
+
+        .job-info {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .salary {
+            color: #15803d;
+            font-weight: 700;
+        }
+
+        .badge-full {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-hybrid {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .skill-badge {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .details-btn {
+            border: 1px solid #635bff;
+            color: #635bff;
+            font-weight: 600;
+        }
+
+        .details-btn:hover {
+            background: #635bff;
+            color: white;
+        }
+
+        .apply-btn {
+            border: none;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(135deg, #635bff, #ec4899);
+        }
+
+        .apply-btn:hover {
+            color: white;
+        }
+
+        /* Modal */
+        .modal-header {
+            background: linear-gradient(135deg, #635bff, #ec4899);
+            color: white;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-title {
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: #cbd5e1;
+            padding: 55px 0 20px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand i {
+            color: #7c6cff;
+        }
+
+        .footer h6 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 9px;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            background: #1f2937;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #635bff;
+        }
+
+        .copyright {
+            border-top: 1px solid #293241;
+            margin-top: 35px;
+            padding-top: 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg py-3">
+
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+
+                <span class="logo-icon me-2">
+                    <i class="fa-solid fa-globe"></i>
+                </span>
+
+                <span class="logo-text">
+                    Job<span>Sphere</span>
+                </span>
+
+            </a>
+
+            <!-- Mobile Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-house"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="jobs.html">
+                            <i class="fa-solid fa-briefcase"></i>
+                            Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="companies.html">
+                            <i class="fa-solid fa-building"></i>
+                            Companies
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">
+                            <i class="fa-solid fa-book-open"></i>
+                            Resources
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Logout -->
+                <div id="authButton">
+
+                    <button type="button" onclick="logout()" class="logout-btn">
+
+                        <i class="fa-solid fa-right-from-bracket me-2"></i>
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+    <section class="jobs-hero">
+
+        <div class="hero-icon">
+            <i class="fa-solid fa-briefcase"></i>
+        </div>
+
+        <h1>Find Your Dream Job</h1>
+
+        <p>
+            Discover opportunities that match your skills and career goals.
+        </p>
+
+    </section>
+
+
+    <!-- Search Box -->
+    <section class="search-box">
+
+        <div class="container">
+
+            <div class="search-inner">
+
+                <div class="search-title">
+
+                    <i class="fa-solid fa-magnifying-glass me-2 text-primary"></i>
+
+                    Find a job that fits your career
+
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-5">
+
+                        <input type="text" class="form-control" placeholder="Job title or keyword">
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <input type="text" class="form-control" placeholder="Location">
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <button class="search-btn">
+
+                            <i class="fa-solid fa-search me-2"></i>
+                            Search
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Jobs Section -->
+    <section class="container py-5">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Latest Job Opportunities
+            </h2>
+
+            <p class="section-subtitle">
+                Explore jobs from different companies and apply for the right opportunity.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- Job 1 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="job-card">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="job-icon me-3">
+                            <i class="fa-brands fa-java"></i>
+                        </div>
+
+                        <div>
+                            <h5 class="job-title mb-1">
+                                Java Developer
+                            </h5>
+
+                            <p class="company-name mb-0">
+                                TechNova Solutions
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-info mb-2">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        Pune
+                    </p>
+
+                    <p class="salary mb-3">
+                        <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                        ₹4 - ₹7 LPA
+                    </p>
+
+
+                    <span class="badge badge-full rounded-pill px-3 py-2">
+                        Full Time
+                    </span>
+
+
+                    <div class="mt-3">
+
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Spring</span>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button class="btn details-btn w-50" data-bs-toggle="modal" data-bs-target="#javaModal">
+
+                            View Details
+
+                        </button>
+
+                        <button class="btn apply-btn w-50" data-bs-toggle="modal" data-bs-target="#applyModal">
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Job 2 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="job-card">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="job-icon me-3">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+
+                            <h5 class="job-title mb-1">
+                                Web Developer
+                            </h5>
+
+                            <p class="company-name mb-0">
+                                DigitalWorks Pvt. Ltd.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-info mb-2">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        Mumbai
+                    </p>
+
+                    <p class="salary mb-3">
+                        <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                        ₹3 - ₹6 LPA
+                    </p>
+
+
+                    <span class="badge badge-full rounded-pill px-3 py-2">
+                        Full Time
+                    </span>
+
+
+                    <div class="mt-3">
+
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button class="btn details-btn w-50" data-bs-toggle="modal" data-bs-target="#webModal">
+
+                            View Details
+
+                        </button>
+
+                        <button class="btn apply-btn w-50" data-bs-toggle="modal" data-bs-target="#applyModal">
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Job 3 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="job-card">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="job-icon me-3">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </div>
+
+                        <div>
+
+                            <h5 class="job-title mb-1">
+                                Data Analyst
+                            </h5>
+
+                            <p class="company-name mb-0">
+                                Insight Technologies
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-info mb-2">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        Pune
+                    </p>
+
+                    <p class="salary mb-3">
+                        <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                        ₹4 - ₹6 LPA
+                    </p>
+
+
+                    <span class="badge badge-hybrid rounded-pill px-3 py-2">
+                        Hybrid
+                    </span>
+
+
+                    <div class="mt-3">
+
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Power BI</span>
+                        <span class="skill-badge">Excel</span>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button class="btn details-btn w-50" data-bs-toggle="modal" data-bs-target="#dataModal">
+
+                            View Details
+
+                        </button>
+
+                        <button class="btn apply-btn w-50" data-bs-toggle="modal" data-bs-target="#applyModal">
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Job 4 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="job-card">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="job-icon me-3">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+
+                        <div>
+
+                            <h5 class="job-title mb-1">
+                                Software Engineer
+                            </h5>
+
+                            <p class="company-name mb-0">
+                                CodeSphere Technologies
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-info mb-2">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        Bengaluru
+                    </p>
+
+                    <p class="salary mb-3">
+                        <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                        ₹5 - ₹8 LPA
+                    </p>
+
+
+                    <span class="badge badge-full rounded-pill px-3 py-2">
+                        Full Time
+                    </span>
+
+
+                    <div class="mt-3">
+
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">SQL</span>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button class="btn details-btn w-50" data-bs-toggle="modal" data-bs-target="#softwareModal">
+
+                            View Details
+
+                        </button>
+
+                        <button class="btn apply-btn w-50" data-bs-toggle="modal" data-bs-target="#applyModal">
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Job 5 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="job-card">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="job-icon me-3">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+
+                        <div>
+
+                            <h5 class="job-title mb-1">
+                                Cloud Developer
+                            </h5>
+
+                            <p class="company-name mb-0">
+                                CloudTech Systems
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-info mb-2">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        Hyderabad
+                    </p>
+
+                    <p class="salary mb-3">
+                        <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                        ₹5 - ₹8 LPA
+                    </p>
+
+
+                    <span class="badge badge-hybrid rounded-pill px-3 py-2">
+                        Hybrid
+                    </span>
+
+
+                    <div class="mt-3">
+
+                        <span class="skill-badge">Cloud</span>
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">SQL</span>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button class="btn details-btn w-50" data-bs-toggle="modal" data-bs-target="#cloudModal">
+
+                            View Details
+
+                        </button>
+
+                        <button class="btn apply-btn w-50" data-bs-toggle="modal" data-bs-target="#applyModal">
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Job 6 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="job-card">
+
+                    <div class="d-flex align-items-center mb-3">
+
+                        <div class="job-icon me-3">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+
+                        <div>
+
+                            <h5 class="job-title mb-1">
+                                Frontend Developer
+                            </h5>
+
+                            <p class="company-name mb-0">
+                                InnovateSoft
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-info mb-2">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        Bengaluru
+                    </p>
+
+                    <p class="salary mb-3">
+                        <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                        ₹4 - ₹7 LPA
+                    </p>
+
+
+                    <span class="badge badge-full rounded-pill px-3 py-2">
+                        Full Time
+                    </span>
+
+
+                    <div class="mt-3">
+
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button class="btn details-btn w-50" data-bs-toggle="modal" data-bs-target="#frontendModal">
+
+                            View Details
+
+                        </button>
+
+                        <button class="btn apply-btn w-50" data-bs-toggle="modal" data-bs-target="#applyModal">
+
+                            Apply Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Java Modal -->
+    <div class="modal fade" id="javaModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Java Developer
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h6 class="fw-bold">
+                        TechNova Solutions
+                    </h6>
+
+                    <p>
+                        Looking for a Java Developer to work on web applications
+                        and software solutions.
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong> Pune
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong> ₹4 - ₹7 LPA
+                    </p>
+
+                    <p>
+                        <strong>Skills:</strong> Java, SQL, Spring
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Web Modal -->
+    <div class="modal fade" id="webModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Web Developer
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h6 class="fw-bold">
+                        DigitalWorks Pvt. Ltd.
+                    </h6>
+
+                    <p>
+                        Looking for a Web Developer to create and maintain
+                        modern web pages and applications.
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong> Mumbai
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong> ₹3 - ₹6 LPA
+                    </p>
+
+                    <p>
+                        <strong>Skills:</strong> HTML, CSS, JavaScript
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Data Modal -->
+    <div class="modal fade" id="dataModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Data Analyst
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h6 class="fw-bold">
+                        Insight Technologies
+                    </h6>
+
+                    <p>
+                        Analyze business data and create useful reports
+                        and dashboards.
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong> Pune
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong> ₹4 - ₹6 LPA
+                    </p>
+
+                    <p>
+                        <strong>Skills:</strong> SQL, Power BI, Excel
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Software Modal -->
+    <div class="modal fade" id="softwareModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Software Engineer
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h6 class="fw-bold">
+                        CodeSphere Technologies
+                    </h6>
+
+                    <p>
+                        Work with the development team to build and
+                        maintain software applications.
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong> Bengaluru
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong> ₹5 - ₹8 LPA
+                    </p>
+
+                    <p>
+                        <strong>Skills:</strong> Java, JavaScript, SQL
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Cloud Modal -->
+    <div class="modal fade" id="cloudModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Cloud Developer
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h6 class="fw-bold">
+                        CloudTech Systems
+                    </h6>
+
+                    <p>
+                        Work on cloud-based applications and help maintain
+                        cloud infrastructure.
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong> Hyderabad
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong> ₹5 - ₹8 LPA
+                    </p>
+
+                    <p>
+                        <strong>Skills:</strong> Cloud, Java, SQL
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Frontend Modal -->
+    <div class="modal fade" id="frontendModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Frontend Developer
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h6 class="fw-bold">
+                        InnovateSoft
+                    </h6>
+
+                    <p>
+                        Create attractive and user-friendly web interfaces
+                        using frontend technologies.
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong> Bengaluru
+                    </p>
+
+                    <p>
+                        <strong>Salary:</strong> ₹4 - ₹7 LPA
+                    </p>
+
+                    <p>
+                        <strong>Skills:</strong> HTML, CSS, JavaScript
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Apply Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Apply for Job
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="applyForm">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Full Name
+                            </label>
+
+                            <input type="text" class="form-control" id="applicantName" placeholder="Enter your name"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Email
+                            </label>
+
+                            <input type="email" class="form-control" id="applicantEmail" placeholder="Enter your email"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input type="tel" class="form-control" id="applicantPhone"
+                                placeholder="Enter your phone number" required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Resume
+                            </label>
+
+                            <input type="file" class="form-control" required>
+
+                        </div>
+
+
+                        <button type="submit" class="btn apply-btn w-100">
+
+                            <i class="fa-solid fa-paper-plane me-2"></i>
+                            Submit Application
+
+                        </button>
+
+                    </form>
+
+
+                    <div id="successMessage" class="alert alert-success mt-3 d-none">
+
+                        <i class="fa-solid fa-circle-check me-2"></i>
+                        Application submitted successfully!
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-5">
+
+                    <div class="footer-brand">
+
+                        <i class="fa-solid fa-globe me-2"></i>
+                        JobSphere
+
+                    </div>
+
+                    <p>
+                        Explore opportunities, discover companies,
+                        and take the next step in your career.
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-2">
+
+                    <h6>Quick Links</h6>
+
+                    <a href="index.html">Home</a>
+                    <a href="jobs.html">Jobs</a>
+                    <a href="companies.html">Companies</a>
+
+                </div>
+
+
+                <div class="col-md-2">
+
+                    <h6>Resources</h6>
+
+                    <a href="resources.html">Resume Tips</a>
+                    <a href="interview.html">Interviews</a>
+                    <a href="career-growth.html">Career Guide</a>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <h6>Follow Us</h6>
+
+                    <div class="social-icons">
+
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 JobSphere. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+    
+        <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript -->
+<script>
+
+    document.getElementById("applyForm").addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        document.getElementById("successMessage").classList.remove("d-none");
+
+        this.reset();
+
+    });
+
+    function logout() {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "login.html";
+    }
+
+
+    </script>
+
+</body>
+
+</html>
